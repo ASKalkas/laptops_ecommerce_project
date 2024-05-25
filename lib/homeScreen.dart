@@ -66,19 +66,19 @@ class _HomeScreenState extends State<HomeScreen> {
         // Check if the product's brand is in the list of allowed brands
         if (filterCriteria!['brand'] != null &&
             filterCriteria['brand']!.isNotEmpty) {
-          matches &= filterCriteria['brand']!.contains(product.brand);
+          matches &= filterCriteria['brand']!.contains(product.brand.toLowerCase());
         }
 
         // Check if the product's CPU is in the list of allowed CPUs
         if (filterCriteria['cpu'] != null &&
             filterCriteria['cpu']!.isNotEmpty) {
-          matches &= filterCriteria['cpu']!.contains(product.cpu);
+          matches &= filterCriteria['cpu']!.contains(product.cpu.toLowerCase());
         }
 
         // Check if the product's GPU is in the list of allowed GPUs
         if (filterCriteria['gpu'] != null &&
             filterCriteria['gpu']!.isNotEmpty) {
-          matches &= filterCriteria['gpu']!.contains(product.gpu);
+          matches &= filterCriteria['gpu']!.contains(product.gpu.toLowerCase());
         }
 
         // Check if the product's RAM is within the specified range

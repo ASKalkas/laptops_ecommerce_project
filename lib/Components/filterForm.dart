@@ -556,9 +556,9 @@ class _FilterFormState extends State<FilterForm> {
                     setState(() {
                       _appleChecked = value!;
                       if (value) {
-                        _selectedBrands.add("Lenovo");
+                        _selectedBrands.add("lenovo");
                       } else {
-                        _selectedBrands.remove("Lenovo");
+                        _selectedBrands.remove("lenovo");
                       }
                     });
                   },
