@@ -35,11 +35,12 @@ class AuthenticationProvider with ChangeNotifier {
         await FirebaseFirestore.instance.collection('Users').doc(_userId).get();
     if (userDoc.exists) {
       _role = userDoc.get("role");
-      await requestNotificationPermissions();
+      // await requestNotificationPermissions();
       String? token = await messaging.getToken();
       await FirebaseFirestore.instance.collection('Users').doc(_userId).update({
         'fcmToken': token,
       });
+      _authenticated = true;
       notifyListeners();
     } else {
       _userId = null;
@@ -182,7 +183,8 @@ class AuthenticationProvider with ChangeNotifier {
       notifyListeners();
       return "success";
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found' || e.code == 'wrong-password') {
+      print(e.code);
+      if (e.code == 'invalid-email' || e.code == 'invalid-credential') {
         return "incorrect";
       } else {
         return "other";
